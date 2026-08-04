@@ -3,6 +3,7 @@ const convertBtn = document.getElementById("convert-btn")
 const lengthEl = document.getElementById("length-conv")
 const volumeEl = document.getElementById("volume-conv")
 const massEl = document.getElementById("mass-conv")
+const decimals = 3
 
 let convertedMeters = 0
 let convertedFeet = 0
@@ -32,32 +33,32 @@ convertBtn.addEventListener("click", function() {
 })
 
 function convertLength() {
-    convertedMeters = value*3.281
-    convertedFeet = value/3.281
+    convertedMeters = (value*3.281).toFixed(decimals)
+    convertedFeet = (value/3.281).toFixed(decimals)
 }
 function convertVolume() {
-    convertedLiters = value*0.264
-    convertedGallons = value/0.264
+    convertedLiters = (value*0.264).toFixed(decimals)
+    convertedGallons = (value/0.264).toFixed(decimals)
 }
 
 function convertMass() {
-    convertedKilograms = value*2.204
-    convertedPounds = value/2.204
+    convertedKilograms = (value*2.204).toFixed(decimals)
+    convertedPounds = (value/2.204).toFixed(decimals)
 }
 
 function createStrings() {
     lengthStr = `${value} meters = ${convertedFeet} feet | ${value} feet = ${convertedMeters} meters`
-    volumeStr = ``
-    massStr = ``
+    volumeStr = `${value} liters = ${convertedGallons} gallons | ${value} gallons = ${convertedLiters} liters`
+    massStr = `${value} kilos = ${convertedPounds} pounds | ${value} pounds = ${convertedKilograms} kilos`
 }
 
 function parseStrings () {
-    
+    lengthHTMl = ``
 }
 
 
 function changeDOM() {
-    lengthEl.innerHTML = lengthHTML
-    volumeEl.innerHTML = volumeHTML
-    massEl.innerHTML = massHTML
+    lengthEl.innerHTML = lengthStr
+    volumeEl.innerHTML = volumeStr
+    massEl.innerHTML = massStr
 }
